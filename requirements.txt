@@ -52,4 +52,4 @@ django-emoji~=2.2.2
 nltk~=3.9.1
 transformers
 torch
-safetensors
+safetensors==0.4.2
