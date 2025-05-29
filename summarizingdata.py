@@ -11,6 +11,13 @@ import streamlit as st
 def load_model():
     tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
     model=BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
+    from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+
+model_name = "sshleifer/distilbart-cnn-12-6"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name, use_safetensors=False)
+
     # load the summarization pipeline using a distilled that is lightweight
     return pipeline("summarization",model=model,tokenizer=tokenizer,framework="pt")
 summarizer= load_model()
