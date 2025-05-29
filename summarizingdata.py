@@ -10,7 +10,7 @@ import streamlit as st
 @st.cache_resource
 def load_model():
     tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
-    model=BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn',use_safetensors=False)
+    model=BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
     # load the summarization pipeline using a distilled that is lightweight
     return pipeline("summarization",model=model,tokenizer=tokenizer,framework="pt")
