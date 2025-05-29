@@ -53,3 +53,4 @@ nltk~=3.9.1
 transformers
 torch
 safetensors
+streamlit
