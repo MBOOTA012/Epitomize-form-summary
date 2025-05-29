@@ -1,6 +1,6 @@
 from safetensors.torch import load_model
 from transformers import pipeline,BartTokenizer,BartForConditionalGeneration
-
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import streamlit as st
 
 
@@ -11,11 +11,11 @@ import streamlit as st
 def load_model():
     tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
     model=BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
-    from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+    
 
 
-tokenizer = AutoTokenizer.from_pretrained(model)
-model = AutoModelForSeq2SeqLM.from_pretrained(model, use_safetensors=False)
+    tokenizer = AutoTokenizer.from_pretrained(model)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model, use_safetensors=False)
 
     # load the summarization pipeline using a distilled that is lightweight
     return pipeline("summarization",model=model,tokenizer=tokenizer,framework="pt")
