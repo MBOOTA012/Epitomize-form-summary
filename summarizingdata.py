@@ -1,4 +1,4 @@
-import safetensors
+
 from transformers import pipeline,BartTokenizer,BartForConditionalGeneration
 
 import streamlit as st
